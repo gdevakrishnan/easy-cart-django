@@ -7,6 +7,9 @@ from .models import Product
 class CategoryAdmin (admin.ModelAdmin):
     list_display = ('name', 'description')
 
+class ProductAdmin (admin.ModelAdmin):
+    list_display = ('name', 'category')
+
 # Register your models here.
 admin.site.register(Category, CategoryAdmin)
-admin.site.register(Product)
+admin.site.register(Product, ProductAdmin)
