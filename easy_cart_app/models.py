@@ -18,7 +18,7 @@ class Category (models.Model):
         return self.name
 
 class Product (models.Model):
-    category = ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length = 150, null = False, blank = False)
     vendor = models.CharField(max_length = 150, null = False, blank = False)
     product_image = models.ImageField(upload_to=getFileName, null = True, blank = True)
