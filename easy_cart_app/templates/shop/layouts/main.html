@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Cart - {% block title %}{% endblock title %}</title>
+</head>
+
+<body>
+
+    <!-- Include a new external file -->
+    {% include 'shop/inc/navbar.html' %}
+    
+    <!-- main block content -->
+    {% block content %}
+
+    {% endblock content %}
+
+    {% include 'shop/inc/footer.html' %}
+
+    <!-- scripts content -->
+    {% block scripts %}
+
+    {% endblock scripts %}
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+</body>
+
+</html>
