@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_cart_app' # app connected to the installed apps
 ]
 
 MIDDLEWARE = [
