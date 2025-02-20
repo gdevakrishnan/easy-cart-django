@@ -5,3 +5,6 @@ def home (request):
 
 def register (request):
     return render(request, 'shop/register.html')
+
+def features (request):
+    return render(request, 'shop/features.html')

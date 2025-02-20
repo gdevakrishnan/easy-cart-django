@@ -5,10 +5,15 @@
 		</a>
 		<ul class="items-stretch hidden space-x-3 md:flex">
 			<li class="flex">
-				<a rel="noopener noreferrer" href="/" class="flex items-center px-4 -mb-1">Home</a>
+				<a rel="noopener noreferrer" href="{% url 'home' %}" class="flex items-center px-4 -mb-1">Home</a>
 			</li>
 			<li class="flex">
-				<a rel="noopener noreferrer" href="/register" class="flex items-center px-4 -mb-1">Register</a>
+				<a rel="noopener noreferrer" href="{% url 'register' %}"
+					class="flex items-center px-4 -mb-1">Register</a>
+			</li>
+			<li class="flex">
+				<a rel="noopener noreferrer" href="{% url 'features' %}"
+					class="flex items-center px-4 -mb-1">Features</a>
 			</li>
 		</ul>
 	</div>
