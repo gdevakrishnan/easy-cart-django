@@ -1,21 +1,23 @@
 {% extends 'shop/layouts/main.html' %}
-{% block title %} Collections {% endblock title %}
+
+{% block title %} {{ category }} {% endblock title %}
 
 {% block content %}
 <section class="min-h-screen pt-[100px]">
-    <div class="flex w-full justify-center gap-10 flex-wrap">
-        {% for item in category %}
+    <div class="w-screen h-auto flex justify-center items-center flex-wrap gap-10">
+        {% for item in products %}
         <div class="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
-            <a href="{% url 'collections' item.name %}">
-                <img src="{{ item.image.url }}" alt="{{ item.name }}_category"
+            <a href="#">
+                <img src="{{ item.product_image.url }}" alt="{{ item.name }}_category"
                     class="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500">
             </a>
             <div class="flex flex-col justify-between p-6 space-y-8">
                 <div class="space-y-2">
-                    <a href="{% url 'collections' item.name %}">
+                    <a href="#">
                         <h2 class="text-3xl font-semibold tracking-wide">{{ item.name }}</h2>
                     </a>
-                    <p class="dark:text-gray-800">{{ item.description }}</p>
+                    <p class="dark:text-gray-800">MRP: <span class="line-through text-red-600">Rs.{{ item.original_price }}</span></p>
+                    <p class="dark:text-gray-800">Discount: Rs.{{ item.selling_price }}</p>
                 </div>
             </div>
         </div>
