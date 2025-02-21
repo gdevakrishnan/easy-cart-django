@@ -6,5 +6,6 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('collections', views.collections, name='collections'),
     path('collections/<str:name>', views.collections_view, name='collections'),
+    path('collections/<str:cname>/<str:pname>', views.product_view, name='collections'),
     path('features', views.features, name='features')
 ]
