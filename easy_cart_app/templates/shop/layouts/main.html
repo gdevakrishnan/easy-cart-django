@@ -5,8 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Cart - {% block title %}{% endblock title %}</title>
+    <title>{% block title %}{% endblock title %} | Easy Cart</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
@@ -25,8 +26,6 @@
     {% block scripts %}
 
     {% endblock scripts %}
-
-    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </body>
 
 </html>
