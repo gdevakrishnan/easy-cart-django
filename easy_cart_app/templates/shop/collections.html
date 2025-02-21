@@ -3,9 +3,22 @@
 
 {% block content %}
 <section class="min-h-screen pt-[100px]">
-    <h1 class="text-3xl font-bold underline text-clifford">
-        Collections page
-    </h1>
-    {{category}}
+    <div class="flex w-full justify-center gap-10 flex-wrap">
+        {% for item in category %}
+        <div class="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}_category"
+                class="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500">
+            <div class="flex flex-col justify-between p-6 space-y-8">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-semibold tracking-wide">{{ item.name }}</h2>
+                    <p class="dark:text-gray-800">{{ item.description }}</p>
+                </div>
+                <button type="button"
+                    class="flex items-center justify-center w-full p-3 font-semibold tracking-wide rounded-md dark:bg-violet-600 dark:text-gray-50">View
+                    more</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 </section>
 {% endblock content %}
