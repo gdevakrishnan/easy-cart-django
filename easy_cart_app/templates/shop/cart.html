@@ -1,0 +1,53 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% block title %} Cart {% endblock title %}
+
+{% block content %}
+<section class="min-h-screen pt-[100px]">
+    {% if products %}
+    {% include 'shop/inc/message.html' %}
+    <table class="w-11/12 mx-auto">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Name</th>
+                <th>Selling Price</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+            <tr>
+                <td class="text-center" class="flex justify-center items-center">
+                    <img src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}" width="100px"
+                        class="mx-auto m-2">
+                </td>
+                <td class="text-center">
+                    <h1>{{ item.product.name }}</h1>
+                </td>
+                <td class="text-center">
+                    <h1>{{ item.product.selling_price | stringformat:'d' }}</h1>
+                </td>
+                <td class="text-center">
+                    <h1>{{ item.product_qty }}</h1>
+                </td>
+                <td class="text-center">
+                    <h1>{{ item.total_cost }}</h1>
+                </td>
+                <td class="text-center">
+                    <a href="{% url 'cart' item.id %}" onclick="return confirm('Are you sure want to remove?')">
+                        <button class="bg-red-600 px-4 py-1 text-white">Remove</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h1 class="text-right w-11/12 p-2">Total Amount: Rs.<span class="font-semibold">{{ total_amount }}</span></h1>
+    {% else %}
+    <h1>Cart is Empty</h1>
+    {% endif %}
+</section>
+{% endblock content %}

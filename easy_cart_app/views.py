@@ -101,3 +101,25 @@ def add_to_cart (request):
             return JsonResponse({'message': 'Login to add cart'}, status = 400)
     else:
         return JsonResponse({'message': 'Invalid Access'}, status = 400)
+
+def cart(request):
+    if not request.user.is_authenticated:
+        return redirect('/login')
+
+    products = Cart.objects.filter(user=request.user)
+    total_amount = sum(item.total_cost for item in products)
+
+    return render(request, 'shop/cart.html', {"products": products, "total_amount": total_amount})
+
+def delete_cart_item(request, pid):
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    
+    cartitem = Cart.objects.get(id=pid)
+    if cartitem:
+        cartitem.delete()
+        messages.success(request, "Cart item not found")
+        return redirect('/login')
+    else:
+        messages.warning(request, "Cart item not found")
+        return redirect('/cart')
