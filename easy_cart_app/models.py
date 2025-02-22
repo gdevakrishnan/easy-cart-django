@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User # Models for user authentication
 import datetime
 import os
 

@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from easy_cart_app.form import CustomUserForm
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .models import *
 
@@ -6,7 +8,34 @@ def home (request):
     return render(request, 'shop/index.html')
 
 def register (request):
-    return render(request, 'shop/register.html')
+    form = CustomUserForm()
+    if request.method == 'POST':
+        form = CustomUserForm(request.POST) # we send the data for validation
+        if (form.is_valid()):
+            form.save()
+            messages.success(request, "Registeration successfull!!")
+            return redirect("/login")
+    return render(request, 'shop/register.html', {"form": form})
+
+def login_page (request):
+    if request.method == 'POST':
+        name = request.POST.get('username')
+        pwd = request.POST.get('password')
+        user = authenticate(request, username=name, password=pwd)
+        if user is not None:
+            messages.success(request, "Logged in successfully")
+            login(request, user)
+            return redirect('/')
+        else:
+            messages.warning(request, "Invalid username or password")
+            redirect('/login')
+    return render(request, 'shop/login.html')
+
+def logout_page (request):
+    if request.user.is_authenticated:
+        logout(request)
+        messages.success(request, "Logout Successfully")
+    return redirect('/')
 
 def collections (request):
     category = Category.objects.filter(status = 0)

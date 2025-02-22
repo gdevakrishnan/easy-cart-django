@@ -3,6 +3,7 @@
 
 {% block content %}
 <section class="min-h-screen pt-[100px]">
+    {% include 'shop/inc/message.html' %}
     <div class="flex w-full justify-center gap-10 flex-wrap">
         {% for item in category %}
         <div class="max-w-xs rounded-md shadow-md dark:bg-gray-50 dark:text-gray-800">

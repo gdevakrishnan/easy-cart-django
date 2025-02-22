@@ -3,9 +3,39 @@
 {% block title %} Register {% endblock title %}
 
 {% block content %}
-<section class="min-h-screen pt-[100px]">
-    <h1 class="text-3xl font-bold underline text-clifford">
-        Register page
-    </h1>
+<section class="min-h-screen pt-[100px] flex items-center flex-col gap-6">
+    {% include 'shop/inc/message.html' %}
+    
+    <h1 class="text-2xl">Register User</h1>
+    <!-- action is empty because it was in the current page /register -->
+    <form method="post" action="" class="flex flex-col gap-2 bg-white p-6 w-[320px] rounded-sm shadow-sm">
+        {% csrf_token %}
+        <div>
+            {{ form.username }}
+            {% if form.errors.username %}
+            <label class="text-red-600 text-xs">{{ form.errors.username }}</label>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.email }}
+            {% if form.errors.email %}
+            <label class="text-red-600 text-xs">{{ form.errors.email }}</label>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.password1 }}
+            {% if form.errors.password1 %}
+            <label class="text-red-600 text-xs">{{ form.errors.password1 }}</label>
+            {% endif %}
+        </div>
+        <div>
+            {{ form.password2 }}
+            {% if form.errors.password2 %}
+            <label class="text-red-600 text-xs">{{ form.errors.password2 }}</label>
+            {% endif %}
+        </div>
+        <button type="submit" class="px-8 py-2 font-semibold rounded bg-violet-600 w-full text-gray-50">Submit</button>
+        <p class="text-xs text-center">Already have an account? <a href="{% url 'login' %}" class="text-violet-600 underline">Login</a></p>
+    </form>
 </section>
 {% endblock content %}

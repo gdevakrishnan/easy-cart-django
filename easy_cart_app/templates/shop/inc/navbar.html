@@ -7,9 +7,10 @@
 			<li class="flex">
 				<a rel="noopener noreferrer" href="{% url 'home' %}" class="flex items-center px-4 -mb-1">Home</a>
 			</li>
+			{% if request.user.is_authenticated %}
 			<li class="flex">
-				<a rel="noopener noreferrer" href="{% url 'register' %}"
-					class="flex items-center px-4 -mb-1">Register</a>
+				<a rel="noopener noreferrer" href="#"
+					class="flex items-center px-4 -mb-1">{{ request.user }}</a>
 			</li>
 			<li class="flex">
 				<a rel="noopener noreferrer" href="{% url 'features' %}"
@@ -17,8 +18,24 @@
 			</li>
 			<li class="flex">
 				<a rel="noopener noreferrer" href="{% url 'collections' %}"
-					class="flex items-center px-4 -mb-1">collections</a>
+					class="flex items-center px-4 -mb-1">Collections</a>
 			</li>
+			<li class="flex">
+				<a rel="noopener noreferrer" href="#"
+					class="flex items-center px-4 -mb-1">Cart</a>
+			</li>
+			<li class="flex">
+				<a rel="noopener noreferrer" href="{% url 'logout' %}" class="flex items-center px-4 -mb-1">Logout</a>
+			</li>
+			{% else %}
+			<li class="flex">
+				<a rel="noopener noreferrer" href="{% url 'register' %}"
+					class="flex items-center px-4 -mb-1">Register</a>
+			</li>
+			<li class="flex">
+				<a rel="noopener noreferrer" href="{% url 'login' %}" class="flex items-center px-4 -mb-1">Login</a>
+			</li>
+			{% endif %}
 		</ul>
 	</div>
 </header>
